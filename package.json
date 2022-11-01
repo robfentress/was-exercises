@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codesandbox-app/static-template.git"
+    "url": "git+https://github.com/robfentress/was-exercises.git"
   },
   "keywords": [],
-  "author": "Ives van Hoorne",
+  "author": "Rob Fentress",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codesandbox-app/static-template/issues"
+    "url": "https://github.com/robfentress/was-exercises/issues"
   },
-  "homepage": "https://github.com/codesandbox-app/static-template#readme",
+  "homepage": "https://github.com/robfentress/was-exercises#readme",
   "devDependencies": {
     "serve": "^11.2.0"
   }
