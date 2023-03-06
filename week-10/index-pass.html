@@ -15,7 +15,12 @@
         crossorigin="anonymous"></script>
     <style>
         a {
-            color: #861F41;
+            color: #c64600;
+        }
+
+        a:focus,
+        a:hover {
+            color: #668aaa;
         }
 
         div.end {
@@ -31,12 +36,15 @@
         }
 
         div.end a {
-            text-decoration: none;
             color: #C64600;
         }
 
         div.end a:hover {
             text-decoration: underline;
+        }
+
+        div.end a:active {
+            color: #E87722;
         }
 
         div.end a:visited {
@@ -49,9 +57,8 @@
         }
 
         main h1 {
-            color: white;
             background-color: white;
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+            color: #474747;
         }
 
         .rainbow-box {
@@ -71,82 +78,71 @@
                     rgba(255, 0, 0, 1) 100%);
         }
 
-        .form-check-input {
-            /* Bootstrap makes the border color lighter by setting 
-    the CSS `border` property to `1px solid rgba(0, 0, 
-    0, .25)`. This makes it so the contrast ratio 
-    between the border and the adjacent background color 
-    is 1.8:1, which does not meet the requirements under 
-    WCAG Success Criterion 1.4.11 Non-text Contrast. 
-    Therefore, I've darkened the border color by setting 
-    the alpha to .42, which makes the contrast ratio 
-    3:1, the minimum under SC 1.4.11. */
-            border-color: rgba(0, 0, 0, 0.42);
+        #legend>ul {
+            padding-left: 0;
         }
 
-        /* Bootstrap uses custom focus styling.  It sets the 
-  `outline` CSS property to `0` and, instead, relies 
-  on `box-shadow` to indicate the focused state. 
-  Since, when using high contrast themes, `box-shadow` 
-  styling is not displayed, and setting `outline` to 
-  `0` makes the focus state of the checkbox invisible 
-  in some browsers, we restore the `outline` but make 
-  it `dashed black`. This makes it more noticable and 
-  still displays some of Bootstrap's `box-shadow` 
-  styling in the spaces between the black dashes when 
-  not using a Windows high contrast theme. */
+        #legend>ul>li {
+            list-style: none;
+            padding-left: 0.4em;
+        }
+
+        #chart {
+            border: 1px dashed red;
+        }
+
+        .form-check-input:checked {
+            background-color: #5397FD;
+        }
+
+        .form-check-input {
+            border-color: #808080;
+        }
+
         .form-check-input:focus {
             outline: dashed black;
         }
 
-        /* Since Bootstrap is creating a custom appearance for 
-  the checkbox, you need to create a `forced-colors` 
-  media query to apply different styles when the page 
-  is viewed using high contrast themes. For instance, 
-  in order to ensure that the `checked` state of the 
-  checkbox is discernible when using the High Contrast 
-  White Theme in Windows 10 or when using the Desert 
-  High Contrast Theme in Windows 11, you need to use 
-  system color values. Specifically, you need to 
-  explictly set the background color of the checkbox 
-  when in the `checked` state to a system color value 
-  like `FieldText` and set the `stroke` color of the SVG 
-  used for the background image to `Field`.  You could 
-  use different system color values, but they would need 
-  to be naturally contrasting within the context of the 
-  theme. */
-        @media (forced-colors: active) {
 
+        .key {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .key>.item {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            margin-bottom: 1rem;
+        }
+
+        .key>.item:before {
+            /* VoiceOver hack: Add a zero-width space (\200B) which makes it see it as a list. */
+            content: "\200B";
+        }
+
+        .key>.item>.color-tile {
+            flex: none;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        /* 
+        If you don't set the background-color CSS property
+        to the system color, ButtonText, then when using certain
+        Windows High Contrast themes, the checkmark will be invisible.
+        If you don't want the system button text color all the time,
+        but only want it when using a high contrast theme, you can
+        used the forced-colors media query.
+        */
+        @media (forced-colors: active) {
             .form-check-input:checked {
-                /* This sets the background color to whatever color
-      is used for text in a field in the theme you 
-      have chosen.  */
                 background-color: FieldText;
             }
 
             .form-check-input:checked[type=checkbox] {
-                /* Bootstrap creates a custom appearance for the 
-      checkbox by setting the background image to an 
-      SVG of a checkmark. The `stroke` color it uses for 
-      the checkmark is `#fff` (white). This color value 
-      is not modified when the user switches to a high 
-      contrast theme. Therefore, if the high contrast 
-      theme the user chooses sets the background color 
-      to white, the checkmark becomes invisible. To make 
-      this work in high contrast themes, you need to set 
-      the `stroke` color of the SVG to a system color 
-      like `Field`. This will set the color of the 
-      checkmark to whatever the color of the background 
-      of a field is in the high contrast theme you have 
-      chosen. */
                 background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='Field' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
-                /*  The unencoded SVG is: 
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='Field' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg> */
             }
-        }
-
-        .table {
-            max-width: 50%;
         }
     </style>
 </head>
@@ -205,44 +201,52 @@
             <h1 class="text-center rainbow-box">Contrast Success Criteria</h1>
             <figure class="figure">
                 <div id="chart" class="d-flex align-items-center gap-3 mb-3 border justify-content-center mt-3 p-3">
-                    <img src="pie.png" alt="" width="800">
+
+                    <div id="legend">
+                        <ul class="key">
+                            <li class="item">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                    class="color-tile">
+                                    <rect width="100" height="100" fill="rgb(288, 26, 28)" />
+                                </svg>
+                                <div>Always: 17.5%</div>
+                            </li>
+                            <li class="item">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                    class="color-tile">
+                                    <rect width="100" height="100" fill="rgb(55, 126, 184)" />
+                                </svg>
+                                <div>Often: 15%</div>
+                            </li>
+                            <li class="item">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                    class="color-tile">
+                                    <rect width="100" height="100" fill="rgb(77, 175, 74)" />
+                                </svg>
+                                <div>Sometimes: 29.7%</div>
+                            </li>
+                            <li class="item">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                    class="color-tile">
+                                    <rect width="100" height="100" fill="rgb(152, 78, 163)" />
+                                </svg>
+                                <div>Seldom: 22.7%</div>
+                            </li>
+                            <li class="item">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                    class="color-tile">
+                                    <rect width="100" height="100" fill="rgb(255, 127, 0)" />
+                                </svg>
+                                <div>Never: 15%</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <canvas id="canvas" height="400" width="550"></canvas>
                 </div>
-                <figcaption class="figure-caption" id="caption">When a "skip to main content" or "skip navigation" link
-                    is
+                <figcaption class="figure-caption">When a "skip to main content" or "skip navigation" link is
                     available on a page, how often do you use it?</figcaption>
             </figure>
-
-            <table class="table" aria-labelledby="caption">
-                <thead>
-                    <tr>
-                        <th scope="col">Response</th>
-                        <th scope="col">% of respondents</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Always</th>
-                        <td>16.8%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Often</th>
-                        <td>14.4%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Sometimes</th>
-                        <td>28.4%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Seldom</th>
-                        <td>21.6%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Never</th>
-                        <td>14.4%</td>
-                    </tr>
-                </tbody>
-            </table>
-
+            <canvas id="canPie" height="400" width="550"></canvas>
             <fieldset class="mb-3">
                 <legend>Which of the following WCAG success criteria have been met?</legend>
                 <div class="form-check">
@@ -298,47 +302,32 @@
 
 
         <nav class="d-flex justify-content-center" aria-label="Social Media Menu">
-            <ul class="nav">
-                <li class="nav-item btn btn-lg">
-                    <a href="https://youtube.com" class="nav-link">
-                        <span class="bi-youtube" aria-hidden="true" style="color: #EB1514;"></span>
-                        <span class="visually-hidden">YouTube</span>
-                    </a>
-                </li>
-                <li class="nav-item btn-lg">
-                    <a href="https://twitter.com" class="nav-link">
-                        <span class="bi-twitter" aria-hidden="true" style="color: #147AC7;"></span>
-                        <span class="visually-hidden">Twitter</span>
-                    </a>
-                </li>
-                <li class="nav-item btn-lg">
-                    <a href="https://facebook.com" class="nav-link">
-                        <span class="bi-facebook" aria-hidden="true" style="color: #3b5998;"></span>
-                        <span class="visually-hidden">Facebook</span>
-                    </a>
-                </li>
-                <li class="nav-item btn-lg">
-                    <a href="https://instagram.com" class="nav-link">
-                        <span class="bi-instagram" aria-hidden="true" style="color: #ac2bac;"></span>
-                        <span class="visually-hidden">Instagram</span>
-                    </a>
-                </li>
-                <li class="nav-item btn-lg">
-                    <a href="https://whatsapp.com" class="nav-link">
-                        <span class="bi-whatsapp" aria-hidden="true" style="color: #188741;"></span>
-                        <span class="visually-hidden">Whatsapp</span>
-                    </a>
-                </li>
-                <li class="nav-item btn-lg">
-                    <a href="https://github.com" class="nav-link">
-                        <span class="bi-github" aria-hidden="true" style="color: #333333;"></span>
-                        <span class="visually-hidden">GitHub</span>
-                    </a>
-                </li>
-            </ul>
+            <div>
+                <a href="https://youtube.com" class="nav-link bi-youtube text-danger btn-lg">
+                </a>
+            </div>
+            <div>
+                <a href="https://twitter.com" class="nav-link bi-twitter btn-lg">
+                </a>
+            </div>
+            <div>
+                <a href="https://facebook.com" class="nav-link bi-facebook btn-lg">
+                </a>
+            </div>
+            <div>
+                <a href="https://instagram.com" class="nav-link bi-instagram text-danger btn-lg">
+                </a>
+            </div>
+            <div>
+                <a href="https://whatsapp.com" class="nav-link bi-whatsapp text-success btn-lg">
+                </a>
+            </div>
+            <div><a href="https://github.com" class="nav-link bi-github text-dark btn-lg"></a>
+            </div>
         </nav>
     </div>
-    <script src="script.js"></script>
+
+    <script src="canvas-2.js"></script>
 </body>
 
 </html>
