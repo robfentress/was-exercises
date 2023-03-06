@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 
 <head>
   <meta charset="UTF-8" />
@@ -20,8 +20,6 @@
     .flag {
       width: 20px;
       height: 12px;
-      margin-right: .5em;
-      text-decoration: none;
     }
 
     .wikitable {
@@ -55,12 +53,6 @@
       padding: 0.2em 0.4em;
     }
 
-    .wikitable>tbody>tr>th {
-      background-color: #f8f9fa;
-      color: #202122;
-      text-align: left;
-    }
-
     .form-table {
       border-collapse: collapse;
     }
@@ -87,18 +79,17 @@
       width: 100%
     }
 
+    .footer {
+      margin: 0 auto;
+    }
+
+    .footer td {
+      padding: 1em;
+    }
+
     dfn {
       font-style: normal;
       font-weight: bold;
-    }
-
-    .form-control {
-      border-color: #202122;
-    }
-
-    .btn:focus,
-    .form-control:focus {
-      outline: 0.15rem dotted #75787b;
     }
   </style>
 </head>
@@ -152,9 +143,9 @@
   </header>
   <div class="container">
     <aside>
-      To toggle the hiding of the site header, press <kbd>Ctrl</kbd> + <kbd>h</kbd>.
+      To toggle the hiding of the site header, press the <kbd>h</kbd> key.
     </aside>
-    <main id="main">
+    <main>
       <h1>Languages</h1>
       <figure class="mt-3 mb-4">
         <blockquote class="blockquote"
@@ -169,7 +160,7 @@
             Bicameral Mind</cite>
         </figcaption>
       </figure>
-      <h2 id="iso">ISO Language Codes</h2>
+      <h2>ISO Language Codes</h2>
       <p>ISO 639 is a standardized nomenclature used to classify
         languages. Each language is assigned a two-letter (639-1) and three-letter (639-2 and
         639-3) lowercase abbreviation, amended in later versions of the nomenclature.
@@ -196,45 +187,45 @@
           of an ISO 639 macrolanguage
         </li>
       </ul>
-      <table class="wikitable" aria-labelledby="iso">
+      <table class="wikitable">
         <thead>
           <tr>
-            <th scope="col">ISO language name
-            </th>
-            <th scope="col">639-1
-            </th>
-            <th scope="col">639-2/T
-            </th>
-            <th scope="col">639-2/B
-            </th>
-            <th scope="col">639-3
-            </th>
+            <td class="th">ISO language name
+            </td>
+            <td class="th">639-1
+            </td>
+            <td class="th">639-2/T
+            </td>
+            <td class="th">639-2/B
+            </td>
+            <td class="th">639-3
+            </td>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">English</th>
+            <td><strong>English</strong></td>
             <td>en</td>
             <td>eng</td>
             <td>eng</td>
             <td>eng</td>
           </tr>
           <tr>
-            <th scope="row">German</th>
+            <td><strong>German</strong></td>
             <td>de</td>
             <td>deu</td>
             <td>ger</td>
             <td>deu</td>
           </tr>
           <tr>
-            <th scope="row">Spanish, Castilian</th>
+            <td><strong>Spanish, Castilian</strong></td>
             <td>es</td>
             <td>spa</td>
             <td>spa</td>
             <td>spa</td>
           </tr>
           <tr>
-            <th scope="row">French</th>
+            <td><strong>French</strong></td>
             <td>fr</td>
             <td>fra</td>
             <td>fre</td>
@@ -243,7 +234,7 @@
         </tbody>
       </table>
       <h3>Setting the <code>lang</code> attribute incorrectly</h3>
-      <p>It is <em>very</em> important that you use the correct value for the lang attribute. If
+      <p>It is <span class="fst-italic">very</span> important that you use the correct value for the lang attribute. If
         you watch/listen to the video below you'll understand why. The same English language text "What will you do when
         the label
         comes off, And the plastic's all melted, And the chrome is too soft?"
@@ -256,45 +247,51 @@
       </p>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/0uzxu9dQnuU" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-        class="mb-5" title="Video showing effect of lang attribute values on JAWS speech"></iframe>
+        class="mb-5"></iframe>
       <h2>Translations</h2>
       <p>How do you say, "Where is the bathroom?" in different languages?</p>
-      <ul>
-        <li>
-          <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+german"><img src="german.svg"
-              alt="" class="flag" />German</a>: <span lang="de">Wo
-            ist die Toilette? </span>
-        </li>
-        <li>
-          <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+spanish"><img
-              src="spanish.svg" alt="" class="flag" />Spanish</a>:
-          <span lang="es">¿Dónde está el baño?</span>
-        </li>
-        <li>
-          <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+french"><img src="french.svg"
-              alt="" class="flag" />French</a>: <span lang="fr">Où
-            se trouvent les toilettes? </span>
-        </li>
-      </ul>
+      <li>
+        <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+german"><img src="german.svg"
+            alt="German Flag" class="flag" role="img" /></a>
+        <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+german"></a>
+        <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+german">German</a>: <span
+          lang="de">Wo
+          ist die Toilette? </span>
+      </li>
+      <li>
+        <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+spanish"><img src="spanish.svg"
+            alt="Spanish Flag" class="flag" role="img" /></a>
+        <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+spanish"></a>
+        <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+spanish">Spanish</a>:
+        <span lang="es">¿Dónde está el baño?</span>
+      </li>
+      <li>
+        <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+french"><img src="french.svg"
+            alt="French Flag" class="flag" role="img" /></a>
+        <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+french"></a>
+        <a href="https://www.google.com/search?q=how+do+you+say+where+is+the+bathroom+in+french">French</a>: <span
+          lang="fr">Où
+          se trouvent les toilettes? </span>
+      </li>
 
-      <h2 class="mt-5" id="germanCountries">Countries Where German is an official Language</h2>
-      <table class="wikitable mb-5" aria-labelledby="germanCountries">
+      <h2 class="mt-5">Countries Where German is an official Language</h2>
+      <table class="wikitable mb-5">
         <thead>
           <tr>
-            <th rowspan="2" class="th" scope="col">Country
-            </th>
-            <th rowspan="2" class="th" scope="col">Population
-            </th>
-            <th colspan="2" class="th" scope="col">Speakers
-            </th>
-            <th rowspan="2" class="th" scope="col">Notes
-            </th>
+            <td rowspan="2" class="th">Country
+            </td>
+            <td rowspan="2" class="th">Population
+            </td>
+            <td colspan="2" class="th">Speakers
+            </td>
+            <td rowspan="2" class="th">Notes
+            </td>
           </tr>
           <tr>
-            <th class="th" scope="col">Native
-            </th>
-            <th class="th" scope="col">Second
-            </th>
+            <td class="th">Native
+            </td>
+            <td class="th">Second
+            </td>
           </tr>
         </thead>
         <tbody>
@@ -362,36 +359,42 @@
       </table>
       <h2>Free Book</h2>
       <p>Fill out this form and we'll send you a free book on languages</p>
-      <form action="" method="post" class="row g-3" id="book">
-
-        <div class="col-md-6">
-          <label for="first" class="form-label">First Name</label>
-          <input type="text" class="form-control" id="first" autocomplete="given-name">
-        </div>
-        <div class="col-md-6">
-          <label for="last" class="form-label">Last Name</label>
-          <input type="text" class="form-control" id="last" autocomplete="family-name">
-        </div>
-        <div class="col-md-12">
-          <label for="address" class="form-label">Address</label>
-          <textarea type="text" class="form-control" id="address" autocomplete="street-address" rows="3"></textarea>
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
+      <form action="" method="post" class="mb-4">
+        <table class="form-table">
+          <tr>
+            <th colspan="4"><label for="address">Name</label></th>
+          </tr>
+          <tr>
+            <td><label for="first">First</label></td>
+            <td><input type="text" id="first" autocomplete="name"></td>
+            <td><label for="first">Last</label></td>
+            <td><input type="text" id="first"></td>
+          </tr>
+          <tr>
+            <th colspan="4" class="pt-2"><label for="address">Address</label></th>
+          </tr>
+          <tr>
+            <td colspan="4"><textarea name="address" id="address" autocomplete="address"></textarea></td>
+          </tr>
+          <tr>
+            <td colspan="4"><a href="#" class="btn btn-primary">Submit</a></td>
+          </tr>
+        </table>
       </form>
     </main>
-    <footer>
-      <ul class="nav justify-content-center">
-        <li class="nav-item"><a href="legal.html" class="nav-link">Legal Stuff</a></li>
-        <li class="nav-item"><a href="privacy.html" class="nav-link">Privacy Policy</a></li>
-        <li class="nav-item"><a href="security.html" class="nav-link">Security</a></li>
-      </ul>
-    </footer>
+    <div>
+      <table summary="Footer Menu" class="footer">
+        <tr>
+          <td><a href="legal.html">Legal Stuff</a></td>
+          <td><a href="privacy.html">Privacy Policy</a></td>
+          <td><a href="security.html">Security</a></td>
+        </tr>
+      </table>
+    </div>
     <script>
       let hideme = document.getElementById("header");
-      document.addEventListener("keydown", (evt) => {
-        if (evt.key === "h" && evt.ctrlKey) {
+      document.addEventListener("keyup", (evt) => {
+        if (evt.key == "h") {
           if (hideme.hasAttribute("hidden")) {
             hideme.removeAttribute("hidden");
           } else {
