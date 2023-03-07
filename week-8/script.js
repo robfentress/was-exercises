@@ -5,7 +5,7 @@
 
     for (let i = 0; i < menuLinks.length; i++) {
         menuLinks[i].addEventListener("click", function (e) {
-            alert("Imagine this takes you to a page that makes sense give the link name.");
+            alert("Imagine this takes you to a page that makes sense given the link name.");
             e.preventDefault();
         });
     }
